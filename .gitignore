@@ -1,0 +1,91 @@
+# ===== Java 后端 (restful_api) =====
+**/target/
+**/.idea/
+**/*.iml
+**/*.iws
+**/*.ipr
+**/*.class
+**/*.jar
+**/*.war
+
+# ===== Vue 前端 (vue) =====
+**/node_modules/
+**/dist/
+**/.vscode/
+**/.DS_Store
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# ===== Python (etl 如果使用 Python) =====
+**/__pycache__/
+**/*.pyc
+**/.venv/
+**/venv/
+**/env/
+
+# ===== 压缩包（防止再次误传） =====
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# ===== 数据文件（视情况，若 etl 中有大文件） =====
+**/*.csv
+**/*.xlsx
+**/*.json
+# 如果你有特定的用户行为数据文件，也可以单独写一行
+**/UserBehavior_*.csv
+**/UserBehavior_*.zip
+
+# ===== 操作系统垃圾 =====
+Thumbs.db
+desktop.ini# ===== Java 后端 (restful_api) =====
+**/target/
+**/.idea/
+**/*.iml
+**/*.iws
+**/*.ipr
+**/*.class
+**/*.jar
+**/*.war
+
+# ===== Vue 前端 (vue) =====
+**/node_modules/
+**/dist/
+**/.vscode/
+**/.DS_Store
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# ===== Python (etl 如果使用 Python) =====
+**/__pycache__/
+**/*.pyc
+**/.venv/
+**/venv/
+**/env/
+
+# ===== 压缩包（防止再次误传） =====
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# ===== 数据文件（视情况，若 etl 中有大文件） =====
+**/*.csv
+**/*.xlsx
+**/*.json
+# 如果你有特定的用户行为数据文件，也可以单独写一行
+**/UserBehavior_*.csv
+**/UserBehavior_*.zip
+
+# ===== 操作系统垃圾 =====
+Thumbs.db
+desktop.ini
+# 忽略所有环境配置文件
+**/application.yml
+**/application-*.yml
+!**/application-example.yml   # 例外：允许上传示例模板
