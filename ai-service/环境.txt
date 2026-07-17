@@ -1,0 +1,7 @@
+环境：
+conda create -n ai-agent python=3.11 -y
+
+conda activate ai-agent
+
+依赖：
+pip install fastapi uvicorn openai python-dotenv

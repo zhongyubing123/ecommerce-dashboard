@@ -1,3 +1,12 @@
+# Environment
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+
+
 # ===== Java 后端 (restful_api) =====
 **/target/
 **/.idea/
