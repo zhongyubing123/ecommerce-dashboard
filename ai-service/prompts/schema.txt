@@ -1,0 +1,55 @@
+Database Name:
+ecommerce
+
+Table:
+dws_brand_sales
+
+Columns:
+
+brand VARCHAR
+sales_amount DECIMAL
+buy_count INT
+
+Description:
+Stores sales statistics for each brand.
+
+---------------------------------------
+
+Table:
+dws_category_sales
+
+Columns:
+
+category VARCHAR
+sales_amount DECIMAL
+buy_count INT
+
+Description:
+Stores sales statistics for each category.
+
+---------------------------------------
+
+Table:
+dws_hot_items
+
+Columns:
+
+item_name VARCHAR
+sales_amount DECIMAL
+buy_count INT
+
+Description:
+Stores hot-selling products.
+
+---------------------------------------
+
+Table:
+dws_user_active
+
+Columns:
+
+user_id BIGINT
+buy_count INT
+
+Description:
+Stores active user statistics.

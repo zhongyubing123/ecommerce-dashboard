@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+import json
 from dotenv import load_dotenv
 from openai import OpenAI
 
@@ -12,12 +12,15 @@ client = OpenAI(
     api_key=os.getenv("DEEPSEEK_API_KEY"),
     base_url="https://api.deepseek.com"
 )
-
 PROMPT_PATH = Path(__file__).parent.parent / "prompts" / "system_prompt.txt"
 
 with open(PROMPT_PATH, "r", encoding="utf-8") as f:
     SYSTEM_PROMPT = f.read()
 
+SCHEMA_PATH = Path(__file__).parent.parent / "prompts" / "schema.txt"
+
+with open(SCHEMA_PATH, "r", encoding="utf-8") as f:
+    SCHEMA = f.read()
 
 def chat(message, db_result=None):
     """
@@ -35,7 +38,7 @@ def chat(message, db_result=None):
     messages = [
         {
             "role": "system",
-            "content": SYSTEM_PROMPT
+            "content": SYSTEM_PROMPT+ "\n\n" + SCHEMA
         }
     ]
 
@@ -107,27 +110,30 @@ def chat(message, db_result=None):
 
     result = None
 
-    # ==========================
-    # 执行数据库工具
-    # Sprint05：固定 SQL
-    # ==========================
     if tool_call.function.name == "query_mysql":
 
-        sql = """
-        SELECT
-            brand,
-            SUM(sales_amount) AS total_sales
-        FROM dws_brand_sales
-        GROUP BY brand
-        ORDER BY total_sales DESC
-        LIMIT 10;
-        """
+    # 解析 AI 返回的参数
+       args = json.loads(tool_call.function.arguments)
 
+    # 获取 AI 生成的 SQL
+       sql = args["sql"]
+
+       print("========== AI 生成的 SQL ==========")
+       print(sql)
+
+    try:
         result = execute_query(sql)
 
         print("========== 数据库查询结果 ==========")
         print(result)
 
+    except Exception as e:
+
+        print("========== SQL 执行失败 ==========")
+        print(e)
+
+        return f"数据库查询失败：{e}"
+     
     # ==========================
     # 将 Tool 结果返回给 DeepSeek
     # ==========================
